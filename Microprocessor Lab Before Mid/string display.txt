@@ -1,0 +1,26 @@
+
+; You may customize this and other start-up templates; 
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+org 100h
+
+.MODEL SMALL
+.STACK 100H
+.DATA
+MSG DW 'DAFFODIL INTERNATIONAL UNIVERSITY!$'
+.CODE
+MAIN PROC
+    ;INITIALIZE DS
+    MOV AX, @DATA
+    MOV DS, AX   ;INITIALISE DS
+    ;DISPLAY MESSAGE
+    LEA DX, MSG  ;GET MESSAGE
+    MOV AH, 9    ;DISPLAY STRING FUNCTION
+    INT 21H      ;DISPLAY MESSAGE
+    ;RETURN TO DOS
+    MOV AH, 4CH
+    INT 21H      ;DOS EXIT
+    MAIN ENDP
+
+ret
+
